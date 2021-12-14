@@ -1,9 +1,7 @@
-import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
 import Brands from "../components/Brands";
 import MoviesCollection from "../components/MoviesCollection";
 import Header from "../components/Header";
-import Hero from "../components/Hero";
 import Slider from "../components/Slider";
 import ShowsCollection from "../components/ShowsCollection";
 
@@ -13,8 +11,6 @@ export default function Home({
   top_ratedMovies,
   top_ratedShows,
 }) {
-  const [session] = useSession();
-
   return (
     <div>
       <Head>
@@ -25,29 +21,23 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {!session ? (
-        <Hero />
-      ) : (
-        <main className="relative min-h-screen after:bg-home after:bg-center after:bg-cover after:bg-no-repeat after:bg-fixed after:absolute after:inset-0 after:z-[-1]">
-          <Slider />
-          <Brands />
-          <MoviesCollection results={popularMovies} title="Popular Movies" />
-          <ShowsCollection results={popularShows} title="Popular Shows" />
+      <main className="relative min-h-screen 
+      after:bg-home after:bg-center after:bg-cover a
+      fter:bg-no-repeat after:bg-fixed 
+      after:absolute after:inset-0 after:z-[-1]">
+        <Slider />
+        <Brands />
+        <MoviesCollection results={popularMovies} title="Popular Movies" />
+        <ShowsCollection results={popularShows} title="Popular Shows" />
 
-          <MoviesCollection
-            results={top_ratedMovies}
-            title="Top Rated Movies"
-          />
-          <ShowsCollection results={top_ratedShows} title="Top Rated Shows" />
-        </main>
-      )}
+        <MoviesCollection results={top_ratedMovies} title="Top Rated Movies" />
+        <ShowsCollection results={top_ratedShows} title="Top Rated Shows" />
+      </main>
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
+export async function getServerSideProps() {
   const [
     popularMoviesRes,
     popularShowsRes,
@@ -77,7 +67,6 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      session,
       popularMovies: popularMovies.results,
       popularShows: popularShows.results,
       top_ratedMovies: top_ratedMovies.results,

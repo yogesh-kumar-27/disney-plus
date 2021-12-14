@@ -14,6 +14,7 @@ function Hero() {
           layout="fill"
           objectFit="cover"
         />
+      
       </div>
       <div className="flex justify-center items-center">
         <div className="absolute flex flex-col space-y-3 top-1/4 w-full justify-center items-center max-w-screen-sm mx-auto p-8 -mt-16">
