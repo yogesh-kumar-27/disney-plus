@@ -23,9 +23,10 @@ function Show({ result }) {
       <section className="relative min-h-screen 
       after:bg-home after:bg-center after:bg-cover a
       fter:bg-no-repeat after:bg-fixed 
-      after:absolute after:inset-0 after:z-[-1]">
+      after:absolute after:inset-0 after:z-[-1] ">
         <div className="relative min-h-[calc(100vh-72px)]">
           <Image
+          className="bg-cover"
             src={
               `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
               `${BASE_URL}${result.poster_path}`
@@ -34,7 +35,7 @@ function Show({ result }) {
             objectFit="cover"
           />
         </div>
-        <div className="absolute inset-y-12 md:inset-y-auto md:bottom-10 inset-x-4 md:inset-x-12 space-y-6 z-50">
+        <div className="absolute inset-y-12 md:inset-y-[15rem] md:bottom-10 inset-x-4 md:inset-x-12 space-y-6 z-50">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             {result.title || result.original_name}
           </h1>

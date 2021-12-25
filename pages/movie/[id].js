@@ -20,8 +20,8 @@ function Movie({ result }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <section className="relative z-50">
-        <div className="relative min-h-screen">
+      <section className="relative z-50 ">
+        <div className="relative min-h-[calc(100vh-72px)]">
           <Image
             src={
               `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
@@ -31,7 +31,7 @@ function Movie({ result }) {
             objectFit="cover"
           />
         </div>
-        <div className="absolute inset-y-28 md:inset-y-auto md:bottom-10 inset-x-4 md:inset-x-12 space-y-6 z-50">
+        <div className="absolute inset-y-28 md:inset-y-0 md:bottom-10 inset-x-4 md:inset-x-12 space-y-6 z-50">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
             {result.title || result.original_name}
           </h1>
